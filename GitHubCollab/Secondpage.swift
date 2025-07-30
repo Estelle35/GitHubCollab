@@ -88,7 +88,7 @@ struct Secondpage: View {
         if glutenAllergy { allergies.append("Gluten") }
         if nutAllergy { allergies.append("Nut") }
         if dairyAllergy { allergies.append("Dairy") }
-        if shellfishAllergy { allergies.append("Shell Fish")}
+        if shellfishAllergy { allergies.append("Shellfish")}
         return allergies
     }
     
