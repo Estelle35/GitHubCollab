@@ -7,13 +7,13 @@
 
 import SwiftUI
 
+import Foundation
+import SwiftUI
 
-    
-struct ContentView: View {
+struct Home: View {
     var body: some View {
         NavigationStack {
             ZStack {
-               
                 Color(red: 255/255, green: 175/255, blue: 112/255)
                     .frame(width: 1000, height: 1000)
                     .ignoresSafeArea()

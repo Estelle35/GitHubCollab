@@ -9,23 +9,27 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        TabView {
-           Home()
-                .tabItem() {
-                    Image(systemName: "house")
-                    Text("Home)")
-                }
+        
+            TabView {
+               Home()
+                    .tabItem() {
+                        Image(systemName: "house")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        Text("Home)")
+                    }
+                
             
             ViewA()
                 .tabItem() {
                     Image(systemName: "phone.fill")
-                    Text("ViewA")
+                    Text("Ratings")
                 }
             
             ViewB()
                  .tabItem() {
                      Image(systemName: "person.fill")
-                     Text("ViewB")
+                     Text("About us")
                  }
           
         }
