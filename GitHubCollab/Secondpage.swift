@@ -9,7 +9,7 @@ import SwiftUI
 //making a class for restaurants
 class Restaurant: Identifiable {
     let id = UUID()
-    var glutenFree = false
+    var glutenFree = true
     var nutFree = false
     var dairyFree = false
     var shellfishFree = false
