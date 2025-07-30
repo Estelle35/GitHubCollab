@@ -21,10 +21,12 @@ struct ContentView: View {
             ViewA()
                 .tabItem() {
                     Image(systemName: "person")
+                    Text("About")
                 }
             ViewB()
                 .tabItem() {
                     Image(systemName: "phone")
+                    Text("Ratings")
                 }
         }
     }
