@@ -108,7 +108,7 @@ struct Secondpage: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 20) {
-                Text("Select your allergies:")
+                Text("Select your allergies/allergy:")
                     .font(.title2)
                     .fontWeight(.semibold)
                     .foregroundColor(Color.orange)
