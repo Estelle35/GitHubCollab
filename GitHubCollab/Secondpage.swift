@@ -110,7 +110,7 @@ struct Secondpage: View {
                 // Background color from old code
                 Color(red: 255/255, green: 244/255, blue: 214/255)
                     .ignoresSafeArea()
-                VStack( spacing: 20) {
+                VStack( alignment: .leading, spacing: 20) {
                     Text("Select your allergies:")
                         .font(.title2)
                         .fontWeight(.semibold)
