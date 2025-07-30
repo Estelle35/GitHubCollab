@@ -164,7 +164,7 @@ struct Secondpage: View {
                         ForEach(lastRecommendations, id: \.id) { r in
                             if let url = URL(string: r.url) {
                                 Link("☀️ \(r.name)", destination: url)
-                                    .foregroundColor(.pink)
+                                    .foregroundColor(.red)
                             }
                         }
                     } else {
