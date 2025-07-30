@@ -82,6 +82,7 @@ struct Secondpage: View {
             }
         }
     }
+   //end of function
     
     var selectedAllergies: [String] {
         var allergies = [String]()
