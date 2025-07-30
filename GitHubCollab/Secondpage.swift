@@ -14,13 +14,15 @@ class Restaurant: Identifiable {
     var dairyFree = false
     var shellfishFree = false
     var name = ""
+    var url: String = ""
     
-    init(rName : String, rGlutenFree : Bool, rNutFree : Bool, rDairyFree : Bool, rShellfishFree : Bool) {
+    init(rName : String, rGlutenFree : Bool, rNutFree : Bool, rDairyFree : Bool, rShellfishFree : Bool,  rURL: String) {
         name = rName
         shellfishFree = rShellfishFree
         nutFree = rNutFree
         dairyFree = rDairyFree
         glutenFree = rGlutenFree
+        url = rURL
     }
 }
 //end of making class
@@ -86,91 +88,103 @@ struct Secondpage: View {
         if glutenAllergy { allergies.append("Gluten") }
         if nutAllergy { allergies.append("Nut") }
         if dairyAllergy { allergies.append("Dairy") }
+        if shellfishAllergy { allergies.append("Shell Fish")}
         return allergies
     }
     
     var body: some View {
         //variables for our initial restaurants
-        let caneAndCoconut = Restaurant(rName: "Cane & Coconut", rGlutenFree: false, rNutFree: false, rDairyFree: true, rShellfishFree: true)
-        let daikaya = Restaurant(rName: "Daikaya", rGlutenFree: false, rNutFree: true, rDairyFree: true, rShellfishFree: true)
-        let lostDogCafeAlexandria = Restaurant(rName: "Lost Dog Cafe Alexandria", rGlutenFree: true, rNutFree: true, rDairyFree: false, rShellfishFree: false)
-        let riseBakery = Restaurant(rName: "Rise Bakery", rGlutenFree: true, rNutFree: true, rDairyFree: true, rShellfishFree: true)
-        let hundredBowlsOfSoup = Restaurant(rName: "100 Bowls of Soup", rGlutenFree: true, rNutFree: false, rDairyFree: true, rShellfishFree: false)
-        let seoulSpice = Restaurant(rName: "Seoul Spice", rGlutenFree: true, rNutFree: false, rDairyFree: true, rShellfishFree: false)
-        let josephinesGF = Restaurant(rName: "Josephines GF", rGlutenFree: true, rNutFree: true, rDairyFree: false, rShellfishFree: false)
-        let andPizza = Restaurant(rName: "&Pizza", rGlutenFree: true, rNutFree: true, rDairyFree: false, rShellfishFree: false)
-        let bakedByYael = Restaurant(rName: "Baked by Yael", rGlutenFree: true, rNutFree: true, rDairyFree: false, rShellfishFree: false)
-        let restaurants = [caneAndCoconut, daikaya, lostDogCafeAlexandria, riseBakery, hundredBowlsOfSoup, seoulSpice, josephinesGF, andPizza, bakedByYael]
+        let caneAndCoconut = Restaurant(rName: "Cane & Coconut", rGlutenFree: false, rNutFree: false, rDairyFree: true, rShellfishFree: true, rURL: "https://www.caneandcoconut.com")
+        let daikaya = Restaurant(rName: "Daikaya", rGlutenFree: false, rNutFree: true, rDairyFree: true, rShellfishFree: true, rURL: "https://www.daikaya.com"
+        )
+        let lostDogCafeAlexandria = Restaurant(rName: "Lost Dog Cafe Alexandria", rGlutenFree: true, rNutFree: true, rDairyFree: false, rShellfishFree: false, rURL: "https://www.lostdogcafe.com")
+        let riseBakery = Restaurant(rName: "Rise Bakery", rGlutenFree: true, rNutFree: true, rDairyFree: true, rShellfishFree: true, rURL: "https://www.riseglutenfree.com" )
+        let hundredBowlsOfSoup = Restaurant(rName: "100 Bowls of Soup", rGlutenFree: true, rNutFree: false, rDairyFree: true, rShellfishFree: false, rURL: "https://www.100bowlsofsoup.com")
+        let seoulSpice = Restaurant(rName: "Seoul Spice", rGlutenFree: true, rNutFree: false, rDairyFree: true, rShellfishFree: false, rURL: "https://www.seoulspice.com" )
+        let josephinesGF = Restaurant(rName: "Josephines GF", rGlutenFree: true, rNutFree: true, rDairyFree: false, rShellfishFree: false , rURL: "https://www.josephinegf.com/")
+        let andPizza = Restaurant(rName: "&Pizza", rGlutenFree: true, rNutFree: true, rDairyFree: false, rShellfishFree: false, rURL: "https://andpizza.com/")
+        let bakedByYael = Restaurant(rName: "Baked by Yael", rGlutenFree: true, rNutFree: true, rDairyFree: false, rShellfishFree: false, rURL: "https://bakedbyyael.myshopify.com/")
         
-        ZStack {
-            // Background color from old code
-            Color(red: 255/255, green: 244/255, blue: 214/255)
-                .ignoresSafeArea()
-            
-            VStack(spacing: 20) {
-                Text("Select your allergies:")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color.orange)
-                
-                Toggle("Gluten", isOn: $glutenAllergy)
-                    .onChange(of: glutenAllergy) { _ in
-                        recommend(allergies: selectedAllergies, restaurants: restaurants)
-                    }
-                    .toggleStyle(SwitchToggleStyle(tint: Color.orange))
-                
-                Toggle("Nut", isOn: $nutAllergy)
-                    .onChange(of: nutAllergy) { _ in
-                        recommend(allergies: selectedAllergies, restaurants: restaurants)
-                    }
-                    .toggleStyle(SwitchToggleStyle(tint: Color.orange))
-                
-                Toggle("Dairy", isOn: $dairyAllergy)
-                    .onChange(of: dairyAllergy) { _ in
-                        recommend(allergies: selectedAllergies, restaurants: restaurants)
-                    }
-                    .toggleStyle(SwitchToggleStyle(tint: Color.orange))
-                
-                Divider()
-                    .background(Color.orange)
-                
-                if !recommendations.isEmpty {
-                    Text("Restaurants matching all allergies:")
-                        .font(.headline)
+        let restaurants = [caneAndCoconut, daikaya, lostDogCafeAlexandria, riseBakery, hundredBowlsOfSoup, seoulSpice, josephinesGF, andPizza, bakedByYael]
+            ZStack {
+                // Background color from old code
+                Color(red: 255/255, green: 244/255, blue: 214/255)
+                    .ignoresSafeArea()
+                VStack( spacing: 20) {
+                    Text("Select your allergies:")
+                        .font(.title2)
+                        .fontWeight(.semibold)
                         .foregroundColor(Color.orange)
-                        .padding(.top, 10)
                     
-                    ForEach(recommendations, id: \.id) { r in
-                        Text("☀️ \(r.name)")
-                            .foregroundColor(.black)
-                    }
-                } else if !lastRecommendations.isEmpty {
-                    Text("Restaurants matching some allergies:")
-                        .font(.headline)
-                        .foregroundColor(Color.orange)
-                        .padding(.top, 10)
+                    Toggle("Shellfish", isOn: $shellfishAllergy)
+                        .onChange(of: shellfishAllergy) { _ in
+                            recommend(allergies: selectedAllergies, restaurants: restaurants)
+                        }
+                        .toggleStyle(SwitchToggleStyle(tint: Color.orange))
                     
-                    ForEach(lastRecommendations, id: \.id) { r in
-                        Text("☀️ \(r.name)")
-                            .foregroundColor(.black)
+                    Toggle("Gluten", isOn: $glutenAllergy)
+                        .onChange(of: glutenAllergy) { _ in
+                            recommend(allergies: selectedAllergies, restaurants: restaurants)
+                        }
+                        .toggleStyle(SwitchToggleStyle(tint: Color.orange))
+                    
+                    Toggle("Nut", isOn: $nutAllergy)
+                        .onChange(of: nutAllergy) { _ in
+                            recommend(allergies: selectedAllergies, restaurants: restaurants)
+                        }
+                        .toggleStyle(SwitchToggleStyle(tint: Color.orange))
+                    
+                    Toggle("Dairy", isOn: $dairyAllergy)
+                        .onChange(of: dairyAllergy) { _ in
+                            recommend(allergies: selectedAllergies, restaurants: restaurants)
+                        }
+                        .toggleStyle(SwitchToggleStyle(tint: Color.orange))
+                    
+                    Divider()
+                        .background(Color.orange)
+                    
+                    if !recommendations.isEmpty {
+                        Text("Restaurants matching all allergies:")
+                            .font(.headline)
+                            .foregroundColor(Color.yellow)
+                            .padding(.top, 10)
+                        
+                        ForEach(recommendations, id: \.id) { r in
+                            if let url = URL(string: r.url) {
+                                Link("☀️ \(r.name)", destination: url)
+                                    .foregroundColor(.orange)
+                            }
+                        }
+                    } else if !lastRecommendations.isEmpty {
+                        Text("Restaurants matching some allergies:")
+                            .font(.headline)
+                            .foregroundColor(Color.orange)
+                            .padding(.top, 10)
+                        
+                        ForEach(lastRecommendations, id: \.id) { r in
+                            if let url = URL(string: r.url) {
+                                Link("☀️ \(r.name)", destination: url)
+                                    .foregroundColor(.pink)
+                            }
+                        }
+                    } else {
+                        Text("No suggestions available.")
+                            .italic()
+                            .foregroundColor(.gray)
+                            .padding(.top, 10)
                     }
-                } else {
-                    Text("No suggestions available.")
-                        .italic()
-                        .foregroundColor(.gray)
-                        .padding(.top, 10)
+                    
+                    Spacer()
                 }
-                
-                Spacer()
+                .padding()
             }
-            .padding()
-        }
-        .onAppear {
-            recommend(allergies: selectedAllergies, restaurants: restaurants)
+            .onAppear {
+                recommend(allergies: selectedAllergies, restaurants: restaurants)
+            }
         }
     }
-}
 
 #Preview {
-    ContentView()
+    Secondpage()
 }
+
