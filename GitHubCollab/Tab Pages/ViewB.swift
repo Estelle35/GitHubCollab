@@ -18,5 +18,5 @@ struct ViewB: View {
 }
 
 #Preview {
-    ViewB()
+    ViewA()
 }
