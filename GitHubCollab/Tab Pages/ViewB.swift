@@ -39,7 +39,7 @@ struct ViewB: View {
                         .cornerRadius(10)
                 }
                 .padding(.horizontal, 30)
-                .padding(.top, 20)
+                .padding(.top, 21)
 
                 Spacer()
             }
