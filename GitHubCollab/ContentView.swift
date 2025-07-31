@@ -24,7 +24,7 @@ struct ContentView: View {
                     Image(systemName: "person")
                     Text("About")
                 }
-            ViewB()
+            ViewC()
                 .tabItem() {
                     Image(systemName: "star")
                     Text("Ratings")
