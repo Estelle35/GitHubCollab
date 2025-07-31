@@ -13,15 +13,17 @@ class Restaurant: Identifiable {
     var nutFree = false
     var dairyFree = false
     var shellfishFree = false
+    var soyFree = false
     var name = ""
     var url: String = ""
     
-    init(rName : String, rGlutenFree : Bool, rNutFree : Bool, rDairyFree : Bool, rShellfishFree : Bool,  rURL: String) {
+    init(rName : String, rGlutenFree : Bool, rNutFree : Bool, rDairyFree : Bool, rShellfishFree : Bool, rSoyFree : Bool, rURL: String) {
         name = rName
         shellfishFree = rShellfishFree
         nutFree = rNutFree
         dairyFree = rDairyFree
         glutenFree = rGlutenFree
+        soyFree = rSoyFree
         url = rURL
     }
 }
@@ -32,6 +34,7 @@ struct Secondpage: View {
     @State var nutAllergy = false
     @State var dairyAllergy = false
     @State var shellfishAllergy = false
+    @State var soyAllergy = false
     
     @State var recommendations: [Restaurant] = [] // array of restaurants that match all allergies
     @State var lastRecommendations: [Restaurant] = [] // array of restaurants that match some allergies
@@ -69,6 +72,12 @@ struct Secondpage: View {
                         match += 1
                     }
                 }
+                if allergy == "Soy"{
+                    allergyCount += 1
+                    if restaurant.soyFree == true {
+                        match += 1
+                    }
+                }
             }
             if allergyCount == 0 {
                 // If no allergies selected, show nothing
@@ -90,21 +99,22 @@ struct Secondpage: View {
         if nutAllergy { allergies.append("Nut") }
         if dairyAllergy { allergies.append("Dairy") }
         if shellfishAllergy { allergies.append("Shellfish")}
+        if soyAllergy {allergies.append("Soy")}
         return allergies
     }
     
     var body: some View {
         //variables for our initial restaurants
-        let caneAndCoconut = Restaurant(rName: "Cane & Coconut", rGlutenFree: false, rNutFree: false, rDairyFree: true, rShellfishFree: true, rURL: "https://www.caneandcoconut.com")
-        let daikaya = Restaurant(rName: "Daikaya", rGlutenFree: false, rNutFree: true, rDairyFree: true, rShellfishFree: true, rURL: "https://www.daikaya.com"
+        let caneAndCoconut = Restaurant(rName: "Cane & Coconut", rGlutenFree: false, rNutFree: false, rDairyFree: true, rShellfishFree: true, rSoyFree: false ,rURL: "https://www.caneandcoconut.com")
+        let daikaya = Restaurant(rName: "Daikaya", rGlutenFree: false, rNutFree: true, rDairyFree: true, rShellfishFree: true, rSoyFree: false, rURL: "https://www.daikaya.com"
         )
-        let lostDogCafeAlexandria = Restaurant(rName: "Lost Dog Cafe Alexandria", rGlutenFree: true, rNutFree: true, rDairyFree: false, rShellfishFree: false, rURL: "https://www.lostdogcafe.com")
-        let riseBakery = Restaurant(rName: "Rise Bakery", rGlutenFree: true, rNutFree: true, rDairyFree: true, rShellfishFree: true, rURL: "https://www.riseglutenfree.com" )
-        let hundredBowlsOfSoup = Restaurant(rName: "100 Bowls of Soup", rGlutenFree: true, rNutFree: false, rDairyFree: true, rShellfishFree: false, rURL: "https://www.100bowlsofsoup.com")
-        let seoulSpice = Restaurant(rName: "Seoul Spice", rGlutenFree: true, rNutFree: false, rDairyFree: true, rShellfishFree: false, rURL: "https://www.seoulspice.com" )
-        let josephinesGF = Restaurant(rName: "Josephines GF", rGlutenFree: true, rNutFree: true, rDairyFree: false, rShellfishFree: false , rURL: "https://www.josephinegf.com/")
-        let andPizza = Restaurant(rName: "&Pizza", rGlutenFree: true, rNutFree: true, rDairyFree: false, rShellfishFree: false, rURL: "https://andpizza.com/")
-        let bakedByYael = Restaurant(rName: "Baked by Yael", rGlutenFree: true, rNutFree: true, rDairyFree: false, rShellfishFree: false, rURL: "https://bakedbyyael.myshopify.com/")
+        let lostDogCafeAlexandria = Restaurant(rName: "Lost Dog Cafe Alexandria", rGlutenFree: true, rNutFree: true, rDairyFree: false, rShellfishFree: false, rSoyFree: true, rURL: "https://www.lostdogcafe.com")
+        let riseBakery = Restaurant(rName: "Rise Bakery", rGlutenFree: true, rNutFree: true, rDairyFree: true, rShellfishFree: true, rSoyFree: true, rURL: "https://www.riseglutenfree.com" )
+        let hundredBowlsOfSoup = Restaurant(rName: "100 Bowls of Soup", rGlutenFree: true, rNutFree: false, rDairyFree: true, rShellfishFree: false, rSoyFree: false, rURL: "https://www.100bowlsofsoup.com")
+        let seoulSpice = Restaurant(rName: "Seoul Spice", rGlutenFree: true, rNutFree: false, rDairyFree: true, rShellfishFree: false, rSoyFree: false ,rURL: "https://www.seoulspice.com" )
+        let josephinesGF = Restaurant(rName: "Josephines GF", rGlutenFree: true, rNutFree: true, rDairyFree: false, rShellfishFree: false, rSoyFree: false, rURL: "https://www.josephinegf.com/")
+        let andPizza = Restaurant(rName: "&Pizza", rGlutenFree: true, rNutFree: true, rDairyFree: false, rShellfishFree: false, rSoyFree: false, rURL: "https://andpizza.com/")
+        let bakedByYael = Restaurant(rName: "Baked by Yael", rGlutenFree: true, rNutFree: true, rDairyFree: false, rShellfishFree: false, rSoyFree: true, rURL: "https://bakedbyyael.myshopify.com/")
         
         let restaurants = [caneAndCoconut, daikaya, lostDogCafeAlexandria, riseBakery, hundredBowlsOfSoup, seoulSpice, josephinesGF, andPizza, bakedByYael]
             ZStack {
@@ -116,6 +126,12 @@ struct Secondpage: View {
                         .font(.title2)
                         .fontWeight(.semibold)
                         .foregroundColor(Color.orange)
+                    
+                    Toggle("Soy", isOn: $soyAllergy)
+                        .onChange(of: soyAllergy) { _ in
+                            recommend(allergies: selectedAllergies, restaurants: restaurants)
+                        }
+                        .toggleStyle(SwitchToggleStyle(tint: Color.orange))
                     
                     Toggle("Shellfish", isOn: $shellfishAllergy)
                         .onChange(of: shellfishAllergy) { _ in
