@@ -23,7 +23,7 @@ struct ViewA: View {
             }
         }
     }
-}
+
 
 #Preview {
     ViewA()

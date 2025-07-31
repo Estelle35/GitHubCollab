@@ -10,7 +10,7 @@ import SwiftUI
 import Foundation
 import SwiftUI
 
-struct Home: View {
+struct ContentView: View {
     var body: some View {
         TabView {
             Home()
@@ -28,7 +28,6 @@ struct Home: View {
                 .tabItem() {
                     Image(systemName: "star")
                     Text("Ratings")
-                }
             }
         }
     }
