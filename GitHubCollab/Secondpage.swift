@@ -115,8 +115,9 @@ struct Secondpage: View {
         let josephinesGF = Restaurant(rName: "Josephines GF", rGlutenFree: true, rNutFree: true, rDairyFree: false, rShellfishFree: false, rSoyFree: false, rURL: "https://www.josephinegf.com/")
         let andPizza = Restaurant(rName: "&Pizza", rGlutenFree: true, rNutFree: true, rDairyFree: false, rShellfishFree: false, rSoyFree: false, rURL: "https://andpizza.com/")
         let bakedByYael = Restaurant(rName: "Baked by Yael", rGlutenFree: true, rNutFree: true, rDairyFree: false, rShellfishFree: false, rSoyFree: true, rURL: "https://bakedbyyael.myshopify.com/")
+        let theDifferenceBaker = Restaurant(rName: "The Difference Baker", rGlutenFree: true, rNutFree: true, rDairyFree: true, rShellfishFree: true, rSoyFree: true, rURL: "http://thedifferencebaker.com/")
         
-        let restaurants = [caneAndCoconut, daikaya, lostDogCafeAlexandria, riseBakery, hundredBowlsOfSoup, seoulSpice, josephinesGF, andPizza, bakedByYael]
+        let restaurants = [caneAndCoconut, daikaya, lostDogCafeAlexandria, riseBakery, hundredBowlsOfSoup, seoulSpice, josephinesGF, andPizza, bakedByYael, theDifferenceBaker]
             ZStack {
                 // Background color from old code
                 Color(red: 255/255, green: 244/255, blue: 214/255)
